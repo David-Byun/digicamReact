@@ -7,10 +7,31 @@
     <title>Document</title>
     <script src="./js/myscript.js"></script>
   </head>
-  <body></body>
+  <input>
+    <input type="text" name="userid" value="test" />
+    <!-- 
+        input, select, textarea 태그는 name 속성과 value 속성을 갖는다 
+
+        var userid = document.getElementsByName("userid");
+        userid[0].value="test";
+
+        table, span, div : id속성, class속성
+        주의사항 : id는 무조건 문서 하나에 하나만 갖는다. 중복하면 안된다.
+
+        var result = document.getElementById("result");
+        result.innerHTML = "새로운 결과"
+    -->
+  </body>
 </html>
 <script>
+  'use strict';
+  let a = 10;
+  let b = 20;
   [1, 2, 3, 4, 5].forEach((e) => {
     console.log(e);
   });
+  console.log(a + b);
+  for (i = 1; i<=10; i++){
+    a+= i;
+  }
 </script>
