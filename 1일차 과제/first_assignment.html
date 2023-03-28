@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let users = [
+        { 이름: '홍길동', 근무시간: 40, 시간당급여액: 10000 },
+        { 이름: '임꺽정', 근무시간: 15, 시간당급여액: 20000 },
+        { 이름: '장길산', 근무시간: 20, 시간당급여액: 20000 },
+        { 이름: '강감찬', 근무시간: 30, 시간당급여액: 15000 },
+        { 이름: '이순신', 근무시간: 40, 시간당급여액: 30000 },
+      ];
+
+      for (user of users) {
+        console.log(
+          `이름 : ${user.이름} 근무시간 : ${user.근무시간} 시간당급여액 : ${
+            user.시간당급여액
+          } 주급 : ${user.근무시간 * user.시간당급여액}`
+        );
+      }
+    </script>
+  </body>
+</html>
