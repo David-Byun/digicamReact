@@ -22,5 +22,33 @@
     console.log(
       `${person.name}의 총점은 ${person.total} 평균은 ${person.avg} 입니다`
     );
+
+    let s = [
+      { name: '홍길동', kor: 90, eng: 80, mat: 70 },
+      { name: '임꺽정', kor: 90, eng: 80, mat: 70 },
+      { name: '우리네', kor: 90, eng: 80, mat: 70 },
+      { name: '카우이', kor: 90, eng: 80, mat: 70 },
+      { name: '사우이', kor: 90, eng: 80, mat: 70 },
+    ];
+
+    for (a of s) {
+      console.log(a['name']);
+    }
+
+    for (i = 0; i < s.length; i++) {
+      s[i].total = s[i].kor + s[i].eng + s[i].mat;
+    }
+
+    for (i = 0; i < s.length; i++) {
+      console.log(`${s[i].name} ${s[i].total}`);
+    }
+
+    for (i in s) {
+      console.log(`${s[i].name} ${s[i].total}`);
+    }
+
+    s.forEach((e) => {
+      console.log(`${e.name} ${e.total}`);
+    });
   </script>
 </html>
