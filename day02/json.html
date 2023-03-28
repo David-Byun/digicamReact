@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let user = { name: 'John', age: 30 };
+    let person = { name: '홍길동', age: 23, kor: 90, eng: 90, mat: 100 };
+
+    // 이중 따옴표를 주는게 맞음
+
+    console.log(person.name);
+    console.log(user.name);
+
+    person.total = person.kor + person.eng + person.mat;
+    person.avg = parseInt(person.total / 3);
+
+    console.log(
+      `${person.name}의 총점은 ${person.total} 평균은 ${person.avg} 입니다`
+    );
+  </script>
+</html>

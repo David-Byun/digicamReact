@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  let year = promt('연도를 입력하세요', '2023');
+  if (year == null) {
+    if (year % 4 == 0 || year % 100 != 0 || year % 400 == 0) {
+      alert(`${year} 는 윤년`);
+    } else {
+      alert(`${year} 는 윤년이 아닙니다`);
+    }
+  } else {
+    alert('취소를 선택하셨습니다.');
+  }
+
+  let age = prompt('나이는?', 19);
+  if (age >= 19) {
+    console.log('성년입니다');
+  } else {
+    console.log('미성년입니다');
+  }
+
+  function myfunc1(a, b, c) {
+    return a + b + c;
+  }
+  console.log(myfunc1());
+  console.log(myfunc1(1, 2, 3));
+  //매개변수에 기본값 부여. 함수 호출시에 매개변수 위치에 값을 안주면 기본값 적용하여 연산. 기본값을 부여할 때 기본값 안주는 변수들을 먼저 기술하고,
+  //기본값을 부여하는 변수들을 나중에 기술해야 한다. 함수의 이름은 무조건 달라야 한다. 오버로딩을 지원하지 않지만 기본값을 통해 오버로딩과 동일한 효과
+</script>
