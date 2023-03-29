@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    x : <input type="text" name="xvalue" id="xvalue" /><br />
+    y : <input type="text" name="yvalue" id="yvalue" /><br />
+
+    <button type="text" onclick="add(1)">+</button>&nbsp;&nbsp;
+    <button type="text" onclick="add(2)">-</button>&nbsp;&nbsp;
+    <button type="text" onclick="add(3)">*</button>&nbsp;&nbsp;
+    <button type="text" onclick="add(4)">/</button><br />
+    result :
+    <span id="result"></span>
+  </body>
+</html>
+
+<script>
+  function add(operation) {
+    let x = document.getElementById('xvalue').value;
+    let y = document.getElementById('yvalue').value;
+    switch (operation) {
+      case 1:
+        result = parseInt(x) + parseInt(y);
+        break;
+      case 2:
+        result = parseInt(x) - parseInt(y);
+        break;
+      case 3:
+        result = parseInt(x) * parseInt(y);
+        break;
+      case 4:
+        result = parseInt(x) / parseInt(y);
+        break;
+    }
+    document.getElementById('result').innerHTML = result;
+  }
+</script>

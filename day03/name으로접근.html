@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" name="number" value="20" /><br />
+  </body>
+</html>
+<script>
+  let numbers = document.getElementsByName('number');
+  let result = document.getElementsByName('result');
+  //name 속성은 무조건 배열로 읽어온다.
+  let sum = 0;
+  numbers.forEach((n) => {
+    sum += parseInt(n.value);
+  });
+  result[0].value = sum;
+</script>

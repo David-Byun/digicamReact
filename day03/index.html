@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button type="button" onclick="goDisplay()">누르세요</button>
+
+    <!-- 
+        <input type="submit"> 무조건 서버로 정보를 전송한다
+        <button>누르세요</button>
+
+        <input type="button"> 이벤트만 발생시킨다.
+        <button type="button">누르세요</button>
+     -->
+  </body>
+</html>
+<script>
+  function goDisplay() {
+    alert('button 눌림');
+  }
+
+  window.onload = function () {
+    document.getElementById('btnPress').addEventListener(() => {
+      alert('두번째 버튼');
+    });
+
+    document.getElementById('btnPress2').addEventListener(function () {
+      alert('세번째 버튼');
+    });
+  };
+
+  let add = (x, y) => x + y; //화살표 함수, return {} 생략 가능
+  console.log(add(4, 5));
+
+  let sigma = (limit) => {
+    sum = 1;
+    for (i = 1; i <= limit; i++) {
+      sum += i;
+    }
+  };
+
+  console.log(sigma);
+</script>
