@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+      integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  //jquery는 여러개 요소 리스트일 경우 자동으로 순회해서 등록
+  $('p').on('click', function () {
+    $('#jq').css('border', '2px solid orange');
+  });
+
+  $('h1').text('hello!');
+
+  $('#list').find('li').eq(1).html('두번째 아이템 선택!');
+
+  $('img').width(300);
+  $('img').height(300);
+
+  var imgWidth = $('img').width();
+  $('img').attr('src');
+
+  $('img').attr('src', '/examples/images/img_flag.png');
+</script>
