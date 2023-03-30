@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+      integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <p>여기를 눌러보세요</p>
+    <p id="test1">여기 내용을 바꿔보자</p>
+  </body>
+</html>
+<script>
+  //window.onload 대신 $ jquery
+  $(document).ready(() => {
+    $('p').click(() => {
+      alert('눌림');
+    });
+    $('#test1').html('<h1>글자바꾸기</h1>');
+  });
+</script>

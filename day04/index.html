@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button
+      type="button"
+      style="background-color: moccasin"
+      id="btn1"
+      onclick="changeBackground(this)"
+    >
+      배경색
+    </button>
+    <button
+      type="button"
+      id="btn2"
+      style="background-color: rgb(64, 52, 32)"
+      onclick="changeBackground(this)"
+    >
+      배경색
+    </button>
+    <button
+      type="button"
+      id="btn3"
+      style="background-color: rgb(156, 40, 30)"
+      onclick="changeBackground(this)"
+    >
+      배경색
+    </button>
+    <button
+      type="button"
+      id="btn4"
+      style="background-color: rgb(125, 50, 131)"
+      onclick="changeBackground(this)"
+    >
+      배경색
+    </button>
+    <button
+      type="button"
+      id="btn5"
+      style="background-color: rgb(12, 91, 216)"
+      onclick="changeBackground(this)"
+    >
+      배경색
+    </button>
+    <button
+      type="button"
+      id="btn6"
+      style="background-color: rgba(39, 120, 37, 0.208)"
+      onclick="changeBackground(this)"
+    >
+      배경색
+    </button>
+    <p>소문자를 입력하면 대문자로 바꿔준다</p>
+    Enter you name : <input></input>
+  </body>
+</html>
+
+<script>
+  // event - 자바스크립트가 제공하는 내장객체, 발생한 이벤트에 대한 모든 정보 갖고 있음
+  function changeBackground(me) {
+    console.log(event.target.id);
+    body = document.getElementsByTagName('body');
+    body[0].style.backgroundColor = me.style.backgroundColor;
+  }
+</script>
