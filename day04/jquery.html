@@ -14,10 +14,19 @@
   <body>
     <p>여기를 눌러보세요</p>
     <p id="test1">여기 내용을 바꿔보자</p>
+    <input id="input" />
+    <button>하하하</button>
+    <p>없어져라 야얏</p>
   </body>
 </html>
 <script>
   //window.onload 대신 $ jquery
+
+  $('input').focus(() => $(this).css('background-color', '#cccccc'));
+  $('button').click(() => {
+    $('p').toggle();
+  });
+
   $(document).ready(() => {
     $('p').click(() => {
       alert('눌림');
