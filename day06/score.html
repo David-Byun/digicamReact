@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <th>이름</th>
+        <th>국어</th>
+        <th>영어</th>
+        <th>수학</th>
+        <th>합계</th>
+      </thead>
+      <tbody>
+        <%for(score of scoreData){%>
+        <tr>
+          <td><%=score.name%></td>
+          <td><%=score.kor%></td>
+          <td><%=score.eng%></td>
+          <td><%=score.mat%></td>
+          <td><%=score.mat+score.kor+score.eng%></td>
+        </tr>
+        <%}%>
+      </tbody>
+    </table>
+  </body>
+</html>
