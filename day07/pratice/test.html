@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <%! 전역변수, 메소드 %> <%! String name = "test"; public String getName(){
+    return name; } %> <%= getName() %> <% page
+    contentType="text/html;charset=UTF-8" %> <% int sum = 0; %> <%@ page %> <%@
+    include %> <%@ taglib %>
+    <div data-category="${category}}"></div>
+    <h1>결과 : <%= sum %></h1>
+    <li
+      data-category="100"
+      onclick="location.href='/store/100/${address1}'"
+    ></li>
+    <input type="hidden" value="${category}" class="category" />
+    <ul>
+      <c:forEach items="${storeList}" var="storeList">
+        <@% include file="store-li.jsp" %>
+      </c:forEach>
+      <li></li>
+      <span
+        >최소주문금액
+        <fm:formatNumber value="${storeList.minDelivery}" pattern="###,###" />원
+      </span>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/dan">
+      이름 <input id="name" name="name" /> 국어
+      <input id="kor" onchange="check()" type="number" name="kor" />
+      영어
+      <input id="en" onchange="check()" type="number" name="en" />
+      수학
+      <input id="math" onchange="check()" type="number" name="math" />
+      <input value="결과확인" type="submit" />
+    </form>
+    <div id="result"></div>
+  </body>
+</html>
