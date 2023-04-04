@@ -10,8 +10,8 @@ app.get('/gugu', (req, res) => {
   res.send(data);
 });
 
-app.listen(4000, (req, res) => {
-  console.log('server start http://127.0.0.1:4000');
+app.listen(4001, (req, res) => {
+  console.log('server start http://127.0.0.1:4001');
 });
 
 //get 방식의 경우 ?x=4&y=5 request.query.x
