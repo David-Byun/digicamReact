@@ -25,6 +25,6 @@ app.get('/dan', (req, res) => {
   res.end(result);
 });
 
-app.listen(4001, () => {
-  console.log('server start http://127.0.0.1:4001');
+app.listen(4002, () => {
+  console.log('server start http://127.0.0.1:4002');
 });
