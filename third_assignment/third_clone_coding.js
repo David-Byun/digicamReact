@@ -69,6 +69,11 @@ app.get('/view/:id', (req, res) => {
   });
 });
 
+//페이지만 이동한다. guestbook/write.ejs로 이동
+app.get('/write', (request, response) => {
+  response.render('guestbook/write.ejs');
+});
+
 app.post('/write', (req, res) => {
   console.log(req.body);
   var title = req.body.title;
