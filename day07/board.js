@@ -44,7 +44,6 @@ app.use('/board/save', (request, response) => {
     writer: writer,
     wdate: wdate,
   });
-  console.log(boardList);
   response.redirect('/board/list');
 });
 
