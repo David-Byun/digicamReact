@@ -45,7 +45,7 @@ var guestbookList = [
   },
   {
     id: 5,
-    title: '제목5',
+    ₩₩₩₩₩₩₩title: '제목5',
     writer: '작성자5',
     contents: '내용5',
     wdate: '2021-11-03',
@@ -70,11 +70,11 @@ app.get('/view/:id', (req, res) => {
 });
 
 //페이지만 이동한다. guestbook/write.ejs로 이동
-app.get('/write', (request, response) => {
+₩app.get('/write', (request, response) => {
   response.render('guestbook/write.ejs');
 });
 
-app.post('/write', (req, res) => {
+app.₩post('/write', (req, res) => {
   console.log(req.body);
   var title = req.body.title;
   var writer = req.body.writer;
@@ -92,6 +92,6 @@ app.post('/write', (req, res) => {
   res.redirect('/list'); //글 작성 후 목록으로 이동한다
 });
 
-app.listen(4002, function () {
-  console.log('Example app listening on port 4002!');
+app.listen(4001, function () {
+  console.log('Example app listening on port 4001!');
 });
