@@ -28,6 +28,7 @@ router.get('/add', function (req, res, next) {
 });
 
 router.get('/cal', function (req, res, next) {
+  a = req.query.name;
   ko = parseInt(req.query.ko);
   en = parseInt(req.query.en);
   ma = parseInt(req.query.ma);
@@ -37,7 +38,7 @@ router.get('/cal', function (req, res, next) {
   avg = (ko + en + ma) / 3;
   result.push(sum);
   result.push(avg);
-  console.log(sum, avg);
+
   res.json({ result: result });
 });
 

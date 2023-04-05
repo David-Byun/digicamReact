@@ -34,7 +34,11 @@
         dataType: 'json',
       })
         .done((res, status, err) => {
-          $('#result1').html(`<span>${res.result[0]}, ${res.result[1]}</span>`);
+          $('#result1').html(
+            `<h1>${$('#name').val()} 님의 총점은 ${res.result[0]} 이고 평균은 ${
+              res.result[1]
+            }<h1>`
+          );
         })
         .fail((res, status, err) => {
           console.log(status);
