@@ -4,9 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+/*
+  1. router 등록한다
+  2. url과 router 매칭시켜서 사용한다.
+  3. router 상 url get/post 방식에 따라 작성한다
+*/
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var guestRouter = require('./routes/guestbook');
 var ajaxRouter = require('./routes/ajaxtest');
 
 var app = express();
@@ -26,7 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/guestbook', guestRouter);
 app.use('/ajax', ajaxRouter);
 
 // catch 404 and forward to error handler
