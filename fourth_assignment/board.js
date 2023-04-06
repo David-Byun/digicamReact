@@ -26,17 +26,22 @@ router.get('/write', function (req, res, next) {
   res.render('board/board_write');
 });
 
-router.post('/view/write', async function (req, res, next) {
-  let name = req.body.name;
+router.post('/write', async function (req, res, next) {
+  let writer = req.body.writer;
   let title = req.body.title;
   let contents = req.body.contents;
+  var today = new Date();
+  var year = today.getFullYear();
+  var month = ('0' + (today.getMonth() + 1)).slice(-2);
+  var day = ('0' + today.getDate()).slice(-2);
+
+  var dateString = year + '-' + month + '-' + day;
   let sql = `
         insert into tb_board(title, writer, contents, wdate)
-        values (${title}, ${name}, ${contents}, now())
+        values ("${title}", "${writer}", "${contents}", "${dateString}")
         `;
-  let results = await commonDB.mysqlRead(sql, []);
-  console.log(results);
-  res.render('board/board_view', { board: results });
+  await commonDB.mysqlRead(sql, []);
+  res.redirect('/board');
 });
 
 module.exports = router;
