@@ -36,3 +36,4 @@ async function mysqlRead(sql, params) {
 }
 
 exports.mysqlRead = mysqlRead;
+exports.DBInfo = DBInfo;

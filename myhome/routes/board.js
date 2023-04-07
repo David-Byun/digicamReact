@@ -35,7 +35,6 @@ router.post('/view/write', async function (req, res, next) {
         values (${title}, ${name}, ${contents}, now())
         `;
   let results = await commonDB.mysqlRead(sql, []);
-  console.log(results);
   res.render('board/board_view', { board: results });
 });
 
