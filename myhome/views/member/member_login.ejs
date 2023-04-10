@@ -36,6 +36,7 @@
             class="form-control"
             placeholder="아이디"
             id="userid"
+            name="userid"
           />
         </div>
 
@@ -45,6 +46,7 @@
             class="form-control"
             placeholder="패스워드"
             id="password"
+            name="password"
           />
         </div>
 
@@ -65,10 +67,37 @@
 
 <script>
   $(document).ready(() => {
-    $('#btnLogin').click(() => {
+    $('#btnLogin').click(goLogon);
+    $('#btnCancel').click(goCancel);
+
+    /* $('#btnLogin').click(() => {
       $('#myForm').prop('method', 'post');
-      $('#myForm').prop('action', '/member/login_confirm');
+      $('#myForm').prop('action', '/member/login');
       $('#myForm').submit();
     });
+    */
   });
+
+  function goLogon() {
+    $.ajax({
+      url: '/member/login',
+      data: { userid: $('#userid').val(), password: $('#password').val() },
+      dataType: 'json',
+      method: 'post',
+    })
+      .done((res) => {
+        console.log(res.result);
+        if (res.result == 'success') {
+          alert(res.msg);
+          location.href = '/'; //첫번째 페이지로
+        } else {
+          alert(res.msg);
+        }
+      })
+      .fail((res, status, error) => {
+        console.log(status);
+      });
+  }
+
+  function goCancel() {}
 </script>
