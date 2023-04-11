@@ -18,10 +18,8 @@ router.get('/list/:pg', async function (req, res, next) {
   console.log(`cnt = ${results[0]['cnt']}`);
   let totalCnt = results[0]['cnt'];
   sql = `
-        select a.id, a.title, a.writer, a.username, a.num
-        , date_format(a.wdate, '%Y-%m-%d') wdate 
-        from   
-        (select a.id, a.title, a.writer, a.wdate, c.username, @rownum:=@rownum+1 num 
+        select a.id, a.title, a.writer, a.username, a.num, date_format(a.wdate, '%Y-%m-%d') wdate 
+        from (select a.id, a.title, a.writer, a.wdate, c.username, @rownum:=@rownum+1 num 
           from tb_board A 
           left join (select @rownum:=0) B on 1=1 
           left join tb_member c on a.writer = c.userid 

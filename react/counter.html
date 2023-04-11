@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const { useState } = React;
+      /*    
+        함수기반은 위치 상관없고, 클래스기반은 맨 위에 위치(ReactDOM 위)
+      */
+      class Mycomponent1 extends React.Component {
+        render() {
+          return (
+            <div>
+              <h1>클래스기반</h1>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <div>
+          <h1>카운터</h1>
+          <Counter />
+          <Mycomponent1 />
+        </div>,
+        document.getElementById('root')
+      );
+
+      function Counter() {
+        /*
+            변수를 state라는 공간에 저장한다
+            함수에 변수를 만들면 함수 종료하면 변수가 다 없어진다
+            유지를 위해서 상태정보를 state 공간에 저장해야한다.
+        */
+        let [number, setNumber] = useState(0);
+        const onIncrease = () => {
+          setNumber(number + 1);
+        };
+        const onDecrease = () => {
+          setNumber(number - 1);
+        };
+        return (
+          <div>
+            <h1>{number}</h1>
+            <button type="button" onClick={onIncrease}>
+              +
+            </button>
+            <button type="button" onClick={onDecrease}>
+              -
+            </button>
+          </div>
+        );
+      }
+    </script>
+  </body>
+</html>
