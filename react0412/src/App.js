@@ -1,9 +1,11 @@
-import Hero from './Hero';
+import HeroWrite from './HelloWrite';
+import HeroList from './HeroList';
 
 function App() {
   return (
     <div className="App">
-      <Hero />
+      <HeroWrite />
+      <HeroList />
     </div>
   );
 }
