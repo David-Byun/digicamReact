@@ -63,4 +63,11 @@ router.post('/view/write', async function (req, res, next) {
   res.render('board/board_view', { board: results });
 });
 
+router.get('/student', async function (req, res, next) {
+  let sql = `
+    select student_id, student_name, kor, eng, math from score
+  `;
+  let results = await commonDB.mysqlRead(sql, []);
+  res.render('board/score', { result: results });
+});
 module.exports = router;

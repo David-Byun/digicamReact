@@ -4,10 +4,13 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
+const cors = require('cors');
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let boardRouter = require('./routes/board');
 let memberRouter = require('./routes/member');
+let heroRouter = require('./routes/hero');
+let scoreRouter = require('./routes/score');
 const session = require('express-session');
 const MYSQLSTORE = require('express-mysql-session')(session);
 const DBInfo = require('./commonDB');
@@ -35,10 +38,14 @@ app.use(
   })
 );
 
+app.use(cors()); //보다 정밀하게 받는 방법 찾아서 작성해야 한다. 현재는 아무데서나 요청오면 다받음
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/board', boardRouter);
 app.use('/member', memberRouter);
+app.use('/hero', heroRouter);
+app.use('/score', scoreRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
