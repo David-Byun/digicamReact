@@ -4,23 +4,20 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 
-function BoardWrite(props) {
+function HeroWrite(props) {
   let { id } = useParams(); //보내는 쪽에서 json객체로 보냄
   let history = useNavigate();
 
-  const [title, setTitle] = useState('');
-  const [contents, setContents] = useState('');
-  const [writer, setWriter] = useState('');
+  const [heroName, setHeroName] = useState('');
+  const [heroDesc, setHeroDesc] = useState('');
 
   useEffect(() => {
     async function loadData() {
       await axios
-        .get(SERVERIP + '/board/list/' + id)
+        .get(SERVERIP + '/hero/view/' + id)
         .then((res) => {
-          console.log(res.data);
-          /*  setTitle(res.data);
-          setContents(res.data);
-          setWriter(res.data); */
+          setHeroName(res.data.hero.hero_name);
+          setHeroDesc(res.data.hero.hero_desc);
         })
         .catch((error) => {
           console.log(error);
@@ -30,22 +27,19 @@ function BoardWrite(props) {
     //BoardWrite 컴포넌트가 /board/write 일때는 undefined가 오고 /board/view/1 id에는 1이 온다.
   }, []);
 
-  const titleChange = (e) => {
-    setTitle(e.target.value);
+  const nameChange = (e) => {
+    setHeroName(e.target.value);
   };
-  const writerChange = (e) => {
-    setWriter(e.target.value);
-  };
-  const contentsChange = (e) => {
-    setContents(e.target.value);
+  const descChange = (e) => {
+    setHeroDesc(e.target.value);
   };
   //서버로 전송하기
   const postData = () => {
     //데이터를 json으로 묶어서 보내야 한다.
-    let data = { title, writer, contents };
+    let data = { hero_name: heroName, hero_desc: heroDesc };
     axios
-      .post(SERVERIP + '/rest_board/write', data)
-      .then((res) => history('/board/list/1')) //redirect에 대용
+      .post(SERVERIP + '/hero/write', data)
+      .then((res) => history('/hero/list')) //redirect에 대용
       .catch((error) => {
         console.log(error);
       });
@@ -69,7 +63,7 @@ function BoardWrite(props) {
                   id="title"
                   name="title"
                   placeholder="제목을 입력하세요"
-                  onChange={titleChange}
+                  onChange={nameChange}
                   value={id}
                 />
               </div>
@@ -85,8 +79,8 @@ function BoardWrite(props) {
                   id="writer"
                   name="writer"
                   placeholder="이름을 입력하세요"
-                  onChange={writerChange}
-                  value={writer}
+                  onChange={descChange}
+                  value={heroName}
                 />
               </div>
             </td>
@@ -100,8 +94,7 @@ function BoardWrite(props) {
                   rows="5"
                   id="contents"
                   name="contents"
-                  onChange={contentsChange}
-                  value={contents}
+                  value={heroDesc}
                 ></textarea>
               </div>
             </td>
@@ -121,4 +114,4 @@ function BoardWrite(props) {
   );
 }
 
-export default BoardWrite;
+export default HeroWrite;

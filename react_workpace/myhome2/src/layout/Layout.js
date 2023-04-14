@@ -16,19 +16,19 @@ function Layout() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/board/list">
-                게시판
+              <NavLink className="nav-link" to="/hero/list">
+                영웅
               </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <NavLink className="nav-link" href="#">
                 Link
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" href="#">
+              <NavLink className="nav-link disabled" href="#">
                 Disabled
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>

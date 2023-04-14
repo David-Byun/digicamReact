@@ -12,7 +12,7 @@ import { Link, NavLink } from 'react-router-dom';
 
     frontend - axios - backend
 */
-function BoardList(props) {
+function HeroView(props) {
   const [boardList, setBoardList] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -100,4 +100,4 @@ function BoardList(props) {
   );
 }
 
-export default BoardList;
+export default HeroView;

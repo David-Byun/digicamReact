@@ -2,8 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { SERVERIP } from '../CommonUtil';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, NavLink, useParams } from 'react-router-dom';
-import Pagination from 'react-js-pagination';
+import { Link, NavLink } from 'react-router-dom';
 
 /*
     frontend - Axios(Ajax 라이브러리) 비동기로 서버로 정보를 주고 받는 담당
@@ -13,40 +12,24 @@ import Pagination from 'react-js-pagination';
 
     frontend - axios - backend
 */
-function BoardList(props) {
+function HeroList(props) {
   const [boardList, setBoardList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [totalCnt, setTotalCnt] = useState(0);
-  const [pg, setPg] = useState(0);
 
-  const goPage = (pg) => {
-    setPg(pg);
-    loadData(pg);
-  };
-
-  const loadData = async (pg) => {
-    const url = SERVERIP + '/rest_board/list/' + pg;
-    await axios
-      .get(url)
-      .then((res) => {
-        let totalCnt = res.data.totalCnt;
-        let boardList = res.data.boardList;
-        console.log('데이터전체개수 : ', totalCnt);
-        console.log('데이터 : ', boardList);
-
-        setTotalCnt(totalCnt);
-        setBoardList(boardList);
-        setLoading(true);
-        setPg(pg);
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useEffect(() => {
-    loadData(1);
+  useEffect(async () => {
+    async function loadData() {
+      const url = SERVERIP + '/hero/list';
+      await axios
+        .get(url)
+        .then((res) => {
+          setBoardList(res.data);
+          setLoading(true);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+    loadData();
   }, []);
 
   return (
@@ -85,40 +68,29 @@ function BoardList(props) {
       <table className="table table-hover ">
         <thead className="table-secondary">
           <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성일</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
           </tr>
         </thead>
         <tbody>
           {loading === true
-            ? boardList.map((item, index) => {
+            ? boardList.map((item) => {
                 return (
-                  <tr key={index}>
+                  <tr>
                     <td>{item.id}</td>
                     <td>
-                      <Link to={'/board/view/' + item.id}>{item.title}</Link>
+                      <Link to={'/hero/view/' + item.id}>{item.hero_name}</Link>
                     </td>
-                    <td>{item.writer}</td>
-                    <td>{item.wdate}</td>
+                    <td>{item.hero_desc}</td>
                   </tr>
                 );
               })
             : ''}
         </tbody>
       </table>
-      <Pagination
-        activePage={pg}
-        itemsCountPerPage={10}
-        totalItemsCount={totalCnt}
-        pageRangeDisplayed={5}
-        prevPageText={'<'}
-        nextPageText={'>'}
-        onChange={goPage}
-      />
       <div>
-        <NavLink className="btn btn-danger" to="/board/write">
+        <NavLink className="btn btn-danger" to="/hero/write">
           글쓰기
         </NavLink>
       </div>
@@ -126,4 +98,4 @@ function BoardList(props) {
   );
 }
 
-export default BoardList;
+export default HeroList;
