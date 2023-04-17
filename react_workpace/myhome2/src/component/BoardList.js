@@ -33,6 +33,7 @@ function BoardList(props) {
         let boardList = res.data.boardList;
         console.log('데이터전체개수 : ', totalCnt);
         console.log('데이터 : ', boardList);
+        console.log(res.data);
 
         setTotalCnt(totalCnt);
         setBoardList(boardList);
@@ -89,6 +90,7 @@ function BoardList(props) {
             <th>제목</th>
             <th>작성자</th>
             <th>작성일</th>
+            <th>사진</th>
           </tr>
         </thead>
         <tbody>
@@ -102,6 +104,17 @@ function BoardList(props) {
                     </td>
                     <td>{item.writer}</td>
                     <td>{item.wdate}</td>
+                    <td>
+                      {item.filelink !== null ? (
+                        <img
+                          src={`http://127.0.0.1:9090/${item.filelink}`}
+                          height={'100px'}
+                          width={'100px'}
+                        />
+                      ) : (
+                        ''
+                      )}
+                    </td>
                   </tr>
                 );
               })
