@@ -8,27 +8,19 @@ function BoardWrite(props) {
   let { id } = useParams(); //보내는 쪽에서 json객체로 보냄
   let history = useNavigate();
 
-  /* const [title, setTitle] = useState('');
+  const [title, setTitle] = useState('');
   const [contents, setContents] = useState('');
-  const [writer, setWriter] = useState(''); */
+  const [writer, setWriter] = useState('');
 
-  //변수 4개를 하나의 JSON 객체로 저장 필드가 많을때 변수 하나씩 만들면 힘들다
-  const [inputs, setInputs] = useState({
-    title: '',
-    writer: '',
-    contents: '',
-    filename: '',
-  });
-
-  /*  useEffect(() => {
+  useEffect(() => {
     async function loadData() {
       await axios
         .get(SERVERIP + '/board/list/' + id)
         .then((res) => {
           console.log(res.data);
-            setTitle(res.data);
+          setTitle(res.data);
           setContents(res.data);
-          setWriter(res.data); 
+          setWriter(res.data);
         })
         .catch((error) => {
           console.log(error);
@@ -37,22 +29,7 @@ function BoardWrite(props) {
     if (id != undefined) loadData();
     //BoardWrite 컴포넌트가 /board/write 일때는 undefined가 오고 /board/view/1 id에는 1이 온다.
   }, []);
- */
 
-  const onChange = (e) => {
-    const { value, name } = e.target; //입력객체로부터 값과 이름을 가져온다.
-    console.log(value, name);
-    setInputs({ ...inputs, [name]: value }); //{...inputs} - json객체 복사
-
-    /*
-    위 코드를 해석하면 아래처럼 나온다.
-    let temp = inputs;
-    temp[name] = value;
-    setInputs(temp)
-    */
-  };
-
-  /* 
   const titleChange = (e) => {
     setTitle(e.target.value);
   };
@@ -61,13 +38,13 @@ function BoardWrite(props) {
   };
   const contentsChange = (e) => {
     setContents(e.target.value);
-  }; */
-  //서버로 전송하기
+  };
+
   const postData = () => {
     let frmData = new FormData();
-    frmData.append('title', inputs.title);
-    frmData.append('writer', inputs.writer);
-    frmData.append('contents', inputs.contents);
+    frmData.append('title', title);
+    frmData.append('writer', writer);
+    frmData.append('contents', contents);
     frmData.append('file', window.document.myform.file.files[0]);
     /*
       파일 첨부시 자바스크립트가 파일 여러개 첨부하는거로 처리한다. 그래서 무조건 배열의 형태이다.
@@ -84,7 +61,7 @@ function BoardWrite(props) {
       });
   };
   //JSON을 각개 변수로 해체(destruction)
-  const { title, writer, contents, file } = inputs;
+
   return (
     <div className="container" style={{ marginTop: '80px' }}>
       <form name="myform" method="post" encType="multipart/form-data">
@@ -105,7 +82,7 @@ function BoardWrite(props) {
                     id="title"
                     name="title"
                     placeholder="제목을 입력하세요"
-                    onChange={onChange}
+                    onChange={titleChange}
                     value={title}
                   />
                 </div>
@@ -121,7 +98,7 @@ function BoardWrite(props) {
                     id="writer"
                     name="writer"
                     placeholder="이름을 입력하세요"
-                    onChange={onChange}
+                    onChange={titleChange}
                     value={writer}
                   />
                 </div>
@@ -136,7 +113,7 @@ function BoardWrite(props) {
                     rows="5"
                     id="contents"
                     name="contents"
-                    onChange={onChange}
+                    onChange={contentsChange}
                     value={contents}
                   ></textarea>
                 </div>
@@ -151,8 +128,6 @@ function BoardWrite(props) {
                     rows="5"
                     id="file"
                     name="file"
-                    onChange={onChange}
-                    value={file}
                     type="file"
                   ></input>
                 </div>

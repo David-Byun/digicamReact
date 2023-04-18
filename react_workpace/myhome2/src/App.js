@@ -6,6 +6,7 @@ import HeroList from './component/HeroList';
 import HeroWrite from './component/HeroWrite';
 import BoardList from './component/BoardList';
 import BoardWrite from './component/BoardWrite';
+import BoardView from './component/BoardView';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/hero/list" element={<HeroList />} />
           <Route path="/hero/write" element={<HeroWrite />} />
-          <Route path="/hero/view/:id" element={<HeroWrite />} />
+          <Route path="/board/view/:id" element={<BoardView />} />
           <Route path="/board/list/:pg" element={<BoardList />} />
           <Route path="/board/write" element={<BoardWrite />} />
         </Route>
